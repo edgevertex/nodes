@@ -15,9 +15,9 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN rustup update
 RUN rustup default stable
 
-RUN git clone https://github.com/AleoHQ/snarkOS
+RUN git clone https://github.com/AleoHQ/snarkOS --depth 1
 WORKDIR snarkOS
-RUN git checkout tags/v1.3.13 
+RUN git checkout tags/v1.3.14 
 RUN cargo build --release
 
 RUN sudo mv /snarkOS/target/release/snarkos /usr/bin
