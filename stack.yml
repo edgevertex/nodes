@@ -1,5 +1,16 @@
 version: "3.1"
 services:
+  streamr:
+    image: streamr/broker-node:testnet
+    deploy:
+      replicas: 1
+    ports:
+      - 7170:7170
+      - 7171:7171
+      - 1883:1883
+    command: /bin/sh -c ./bin/broker.js /run/secrets/streamr_broker_config.json
+    secrets:
+      - streamr_broker_config.json
   aleo:
     image: edgevertex/aleo:1.3.14
     deploy:
